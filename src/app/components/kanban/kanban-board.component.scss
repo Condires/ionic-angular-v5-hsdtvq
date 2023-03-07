@@ -1,0 +1,43 @@
+.kanban-board-container {
+  ion-row {
+    ion-col {
+      padding: 16px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    ion-col:first-child {
+      border-right: 1px solid #ccc;
+    }
+
+    ion-col:last-child {
+      border-left: 1px solid #ccc;
+    }
+
+    .kanban-board-column-header {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .kanban-board-column-content {
+      flex: 1;
+      overflow-y: auto;
+
+      .kanban-board-card {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 8px;
+        margin-bottom: 8px;
+        cursor: grab;
+      }
+
+      .cdk-drag-placeholder {
+        opacity: 0.5;
+        background-color: #ccc;
+      }
+    }
+  }
+}

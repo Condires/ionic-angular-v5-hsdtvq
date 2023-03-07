@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Kanban Board
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="kanban-board-container">
+    <ion-row>
+      <ion-col>
+        <div class="kanban-board-column-header">
+          To Do
+        </div>
+        <div
+          class="kanban-board-column-content"
+          #doList="cdkDropList"
+          cdkDropList
+          [cdkDropListData]="todo"
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListConnectedTo]="[doneList,doingList]"
+        >
+          <ion-item
+            class="kanban-board-card"
+            *ngFor="let task of todo"
+            cdkDrag
+          >
+            {{ task }}
+          </ion-item>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="kanban-board-column-header">
+          Doing
+        </div>
+        <div
+          class="kanban-board-column-content"
+          #doingList="cdkDropList"
+          cdkDropList
+          [cdkDropListData]="doing"
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListConnectedTo]="[doList,doneList]"
+        >
+          <div
+            class="kanban-board-card"
+            *ngFor="let task of doing"
+            cdkDrag
+          >
+            {{ task }}
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="kanban-board-column-header">
+          Done
+        </div>
+        <div
+          class="kanban-board-column-content"
+          #doneList="cdkDropList"
+          cdkDropList
+          [cdkDropListData]="done"
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListConnectedTo]="[doList,doingList]"
+        >-----
+          <div
+            class="kanban-board-card"
+            *ngFor="let task of done"
+            cdkDrag
+          >
+            {{ task }}
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

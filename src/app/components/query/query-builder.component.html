@@ -1,0 +1,18 @@
+<div>
+  <h2>Filters:</h2>
+  <div *ngFor="let filter of filters; let i=index">
+    <div>
+      <select [(ngModel)]="filter.field">
+        <option *ngFor="let field of fields" [value]="field">{{field}}</option>
+      </select>
+      <select [(ngModel)]="filter.operator">
+        <option *ngFor="let operator of operators" [value]="operator.value">{{operator.label}}</option>
+      </select>
+      <input type="text" [(ngModel)]="filter.value">
+      <button (click)="removeFilter(i)">X</button>
+    </div>
+  </div>
+  <button (click)="addFilter()">Add Filter</button>
+  <br><br>
+  <button (click)="applyFilters()">Apply Filters</button>
+</div>
